@@ -9,7 +9,6 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-
   bool flag = false;
 
   @override
@@ -36,9 +35,20 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => LandingPage(),
-    ));
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 300),
+          transitionsBuilder: (context, animation, animationTime, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          pageBuilder: (context, animation, animationTime) {
+            return LandingPage();
+          }),
+    );
   }
 
   @override
@@ -61,45 +71,61 @@ class _SplashscreenState extends State<Splashscreen> {
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 curve: Curves.easeInOutBack,
-                top: flag ? SizeConfig.blockHorizontal : - SizeConfig.blockHorizontal * 20,
-                left: - SizeConfig.blockHorizontal * 30,
+                top: flag
+                    ? SizeConfig.blockHorizontal
+                    : -SizeConfig.blockHorizontal * 20,
+                left: -SizeConfig.blockHorizontal * 30,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse1.png'),
                   fit: BoxFit.fitHeight,
-                  height: flag ? SizeConfig.blockHorizontal * 150 : SizeConfig.blockHorizontal * 120,
+                  height: flag
+                      ? SizeConfig.blockHorizontal * 150
+                      : SizeConfig.blockHorizontal * 120,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 600),
                 curve: Curves.easeInOutBack,
-                top: flag ? SizeConfig.blockHorizontal * 4 : - SizeConfig.blockHorizontal * 16,
-                right: - SizeConfig.blockHorizontal * 40,
+                top: flag
+                    ? SizeConfig.blockHorizontal * 4
+                    : -SizeConfig.blockHorizontal * 16,
+                right: -SizeConfig.blockHorizontal * 40,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse2.png'),
                   fit: BoxFit.fitHeight,
-                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
+                  height: flag
+                      ? SizeConfig.blockHorizontal * 130
+                      : SizeConfig.blockHorizontal * 100,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 700),
                 curve: Curves.easeInOutBack,
-                top: flag ? - SizeConfig.blockHorizontal * 15 : - SizeConfig.blockHorizontal * 35,
-                left: - SizeConfig.blockHorizontal * 15,
+                top: flag
+                    ? -SizeConfig.blockHorizontal * 15
+                    : -SizeConfig.blockHorizontal * 35,
+                left: -SizeConfig.blockHorizontal * 15,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse3.png'),
                   fit: BoxFit.fitHeight,
-                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
+                  height: flag
+                      ? SizeConfig.blockHorizontal * 130
+                      : SizeConfig.blockHorizontal * 100,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 800),
                 curve: Curves.easeInOutBack,
-                top: flag ? - SizeConfig.blockHorizontal * 22 : - SizeConfig.blockHorizontal * 42,
-                left: - SizeConfig.blockHorizontal * 22,
+                top: flag
+                    ? -SizeConfig.blockHorizontal * 22
+                    : -SizeConfig.blockHorizontal * 42,
+                left: -SizeConfig.blockHorizontal * 22,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse4.png'),
                   fit: BoxFit.fitHeight,
-                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
+                  height: flag
+                      ? SizeConfig.blockHorizontal * 130
+                      : SizeConfig.blockHorizontal * 100,
                 ),
               ),
             ],
