@@ -20,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   startTimer() async {
-    var duration = Duration(milliseconds: 300);
+    var duration = Duration(milliseconds: 900);
     return Timer(duration, flagState);
   }
 
@@ -53,48 +53,53 @@ class _SplashscreenState extends State<Splashscreen> {
           child: Stack(
             children: <Widget>[
               AnimatedContainer(
-                duration: Duration(milliseconds: 2000),
+                duration: Duration(milliseconds: 1000),
+                curve: Curves.easeInOutBack,
                 color: flag ? Color(0xFF1D3557) : Colors.white,
                 height: 3 * SizeConfig.screenHeight / 4,
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOutBack,
                 top: flag ? SizeConfig.blockHorizontal : - SizeConfig.blockHorizontal * 20,
                 left: - SizeConfig.blockHorizontal * 30,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse1.png'),
                   fit: BoxFit.fitHeight,
-                  height: SizeConfig.blockHorizontal * 150,
+                  height: flag ? SizeConfig.blockHorizontal * 150 : SizeConfig.blockHorizontal * 120,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 600),
+                curve: Curves.easeInOutBack,
                 top: flag ? SizeConfig.blockHorizontal * 4 : - SizeConfig.blockHorizontal * 16,
                 right: - SizeConfig.blockHorizontal * 40,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse2.png'),
                   fit: BoxFit.fitHeight,
-                  height: SizeConfig.blockHorizontal * 130,
+                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 700),
+                curve: Curves.easeInOutBack,
                 top: flag ? - SizeConfig.blockHorizontal * 15 : - SizeConfig.blockHorizontal * 35,
                 left: - SizeConfig.blockHorizontal * 15,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse3.png'),
                   fit: BoxFit.fitHeight,
-                  height: SizeConfig.blockHorizontal * 130,
+                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
                 ),
               ),
               AnimatedPositioned(
                 duration: Duration(milliseconds: 800),
+                curve: Curves.easeInOutBack,
                 top: flag ? - SizeConfig.blockHorizontal * 22 : - SizeConfig.blockHorizontal * 42,
                 left: - SizeConfig.blockHorizontal * 22,
                 child: Image(
                   image: AssetImage('assets/images/splashscreen/ellipse4.png'),
                   fit: BoxFit.fitHeight,
-                  height: SizeConfig.blockHorizontal * 130,
+                  height: flag ? SizeConfig.blockHorizontal * 130 : SizeConfig.blockHorizontal * 100,
                 ),
               ),
             ],
