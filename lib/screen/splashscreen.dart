@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
 import 'dart:async';
 import 'landingpage.dart';
+import 'login.dart';
 
 class Splashscreen extends StatefulWidget {
   @override
@@ -46,7 +47,7 @@ class _SplashscreenState extends State<Splashscreen> {
             );
           },
           pageBuilder: (context, animation, animationTime) {
-            return LandingPage();
+            return LoginScreen();
           }),
     );
   }
