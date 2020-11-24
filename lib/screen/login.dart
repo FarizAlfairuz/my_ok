@@ -10,6 +10,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final formKey = GlobalKey<FormState>();
+
+  String _email, _password;
+  bool _btnEnabled = false;
+
+  route() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LandingPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -21,16 +33,17 @@ class _LoginScreenState extends State<LoginScreen> {
           width: SizeConfig.screenWidth,
           child: Stack(
             children: <Widget>[
+              //decoration
               Positioned(
                 bottom: SizeConfig.blockHorizontal * -58,
                 left: SizeConfig.blockHorizontal * -107,
                 child: Image(
-                  image: AssetImage('assets/images/login_register/decoration.png'),
+                  image:
+                      AssetImage('assets/images/login_register/decoration.png'),
                   fit: BoxFit.fitHeight,
                   height: SizeConfig.blockVertical * 90,
                 ),
               ),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -61,82 +74,95 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: SizeConfig.blockVertical * 10,
                   ),
-                  //email
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        labelStyle: TextStyle(
-                          color: Color(0xFF1D3557),
-                          fontWeight: FontWeight.bold,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Color(0xFF1D3557),
-                            width: 2.0,
+
+                  //form
+                  Form(
+                    key: formKey,
+                    onChanged: () => setState(
+                        () => _btnEnabled = formKey.currentState.validate()),
+                    child: Column(
+                      children: <Widget>[
+                        //email
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: "Email",
+                              labelStyle: TextStyle(
+                                color: Color(0xFF1D3557),
+                                fontWeight: FontWeight.bold,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Color(0xFF1D3557),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Color(0xFF1D3557),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusColor: Color(0xFF1D3557),
+                            ),
+                            
+                            onSaved: (input) => _email = input,
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Color(0xFF1D3557),
-                            width: 2.0,
+
+                        //password
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          child: TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              labelStyle: TextStyle(
+                                color: Color(0xFF1D3557),
+                                fontWeight: FontWeight.bold,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Color(0xFF1D3557),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Color(0xFF1D3557),
+                                  width: 2.0,
+                                ),
+                              ),
+                              focusColor: Color(0xFF1D3557),
+                            ),
+                            
+                            onSaved: (input) => _password = input,
                           ),
                         ),
-                        focusColor: Color(0xFF1D3557),
-                      ),
+                      ],
                     ),
                   ),
 
-                  //password
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: TextStyle(
-                          color: Color(0xFF1D3557),
-                          fontWeight: FontWeight.bold,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Color(0xFF1D3557),
-                            width: 2.0,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(
-                            color: Color(0xFF1D3557),
-                            width: 2.0,
-                          ),
-                        ),
-                        focusColor: Color(0xFF1D3557),
-                      ),
-                    ),
-                  ),
                   SizedBox(
                     height: SizeConfig.blockVertical * 5,
                   ),
 
                   //button
                   SizedBox(
-                    height: 80,
-                    width: 80,
+                    height: SizeConfig.blockVertical * 10,
+                    width: SizeConfig.blockVertical * 10,
                     child: FloatingActionButton(
-                      backgroundColor: Color(0xFFE63946),
-                      child: Icon(Icons.navigate_next),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LandingPage()),
-                        );
-                      },
+                      backgroundColor: _btnEnabled ? Color(0xFFE63946) : Colors.grey,
+                      child: Icon(
+                        Icons.input,
+                        size: 30,
+                      ),
+                      onPressed: _btnEnabled ? route : null,
                     ),
                   ),
                   SizedBox(
@@ -173,8 +199,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-
-              
             ],
           ),
         ),
