@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
-import 'package:my_ok/screen/landingpage.dart';
 import 'package:flutter/gestures.dart';
+import 'package:my_ok/screen/menu1.dart';
 import 'register.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,9 +16,9 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _btnEnabled = false;
 
   route() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
+      MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
 
@@ -47,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  //logo
                   Align(
                     alignment: Alignment(-0.9, 0),
                     child: Container(
@@ -57,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: SizeConfig.blockHorizontal * 40,
                     ),
                   ),
+                  //welcome
                   Align(
                     alignment: Alignment(-0.9, 0),
                     child: Container(
@@ -71,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
+
                   SizedBox(
                     height: SizeConfig.blockVertical * 10,
                   ),

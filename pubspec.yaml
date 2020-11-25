@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bottom_navy_bar: ^5.6.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -44,6 +45,8 @@ flutter:
     - assets/images/splashscreen/
     - assets/images/login_register/
     - assets/images/landingpage/
+    - assets/images/categories/
+    - assets/images/banner/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

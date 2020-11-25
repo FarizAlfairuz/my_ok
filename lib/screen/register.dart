@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
-import 'package:my_ok/screen/landingpage.dart';
-import 'login.dart';
+import 'package:my_ok/screen/menu1.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -14,9 +13,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _btnEnabled = false;
 
   route() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LandingPage()),
+      MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
 
@@ -25,9 +24,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(SizeConfig.blockVertical * 25),
+        preferredSize: Size.fromHeight(SizeConfig.blockVertical * 15),
         child: Container(
-          margin: EdgeInsets.only(top: SizeConfig.blockVertical * 8),
+          margin: EdgeInsets.only(top: SizeConfig.blockVertical * 5),
           child: AppBar(
             centerTitle: true,
             title: Text(
@@ -57,6 +56,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: SizeConfig.blockVertical,
               ),
+              //profile image
+              Container(
+                height: SizeConfig.blockVertical * 15,
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      height: SizeConfig.blockVertical * 10,
+                      width: SizeConfig.blockVertical * 10,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF1D3557),
+                      ),
+                    ),
+                    Positioned(
+                      left: 2,
+                      child: Icon(
+                        Icons.person,
+                        color: Color(0xFFE63946),
+                        size: 65,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 18,
+                      left: 19,
+
+                      child: Icon(
+                        Icons.add_circle,
+                        size: 30,
+                        color: Color(0xFFE63946),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              // SizedBox(
+              //   height: SizeConfig.blockVertical * 5,
+              // ),
+
+              //form
               Form(
                 key: formKey,
                 onChanged: () => setState(
@@ -88,6 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                           focusColor: Color(0xFF1D3557),
+                          
                         ),
                         onSaved: (input) => _nama = input,
                       ),
