@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   bottom_navy_bar: ^5.6.0
+  firebase_auth: ^0.18.3+1
+  firebase_core: ^0.5.2+1
 
 
   # The following adds the Cupertino Icons font to your application.

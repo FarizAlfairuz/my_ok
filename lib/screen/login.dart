@@ -3,6 +3,8 @@ import 'package:my_ok/layout.dart';
 import 'package:flutter/gestures.dart';
 import 'package:my_ok/screen/menu1.dart';
 import 'register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -111,7 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               focusColor: Color(0xFF1D3557),
                             ),
-                            
                             onSaved: (input) => _email = input,
                           ),
                         ),
@@ -143,7 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               focusColor: Color(0xFF1D3557),
                             ),
-                            
                             onSaved: (input) => _password = input,
                           ),
                         ),
@@ -160,12 +160,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: SizeConfig.blockVertical * 10,
                     width: SizeConfig.blockVertical * 10,
                     child: FloatingActionButton(
-                      backgroundColor: _btnEnabled ? Color(0xFFE63946) : Colors.grey,
+                      backgroundColor:
+                          _btnEnabled ? Color(0xFFE63946) : Colors.grey,
                       child: Icon(
                         Icons.input,
                         size: 30,
                       ),
-                      onPressed: _btnEnabled ? route : null,
+                      onPressed: _btnEnabled ? logIn : null,
                     ),
                   ),
                   SizedBox(
@@ -207,5 +208,21 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> logIn() async {
+    final formState = formKey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      try {
+        UserCredential user = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+        //langsung ke home page
+      } catch (e) {
+        print(e.message);
+      }
+    }
   }
 }

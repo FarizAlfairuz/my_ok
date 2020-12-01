@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
                             disabledBorder: InputBorder.none,
-                            hintText: 'Search Here...',
+                            hintText: 'is searcing...',
                             hintStyle: TextStyle(
                               color: Color(0xFFE93649),
                             ),
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: SizeConfig.blockVertical * 20,
                 width: SizeConfig.blockHorizontal * 90,
-                // color: Colors.blue,
+                //color: Colors.blue,
                 child: Image(
                   image: AssetImage('assets/images/banner/banner1.png'),
                   fit: BoxFit.fill,

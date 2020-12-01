@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
+import 'package:my_ok/screen/login.dart';
 import 'package:my_ok/screen/menu1.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -80,7 +83,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Positioned(
                       bottom: 18,
                       left: 19,
-
                       child: Icon(
                         Icons.add_circle,
                         size: 30,
@@ -127,7 +129,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                           focusColor: Color(0xFF1D3557),
-                          
                         ),
                         onSaved: (input) => _nama = input,
                       ),
@@ -243,7 +244,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Icons.input,
                     size: 30,
                   ),
-                  onPressed: _btnEnabled ? route : null,
+                  onPressed: _btnEnabled ? signUp : null,
                 ),
               ),
               SizedBox(
@@ -254,5 +255,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  void signUp() async {
+    final formState = formKey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      try {
+        UserCredential user = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
+        Navigator.of(context).pop();
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        //langsung ke loginpage
+      } catch (e) {
+        print(e.message);
+      }
+    }
   }
 }
