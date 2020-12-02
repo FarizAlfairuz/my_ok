@@ -146,8 +146,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 30, right: 30),
+        padding: EdgeInsets.only(left: 30, right: 30),
         child: BottomNavyBar(
+          showElevation: false,
+          backgroundColor: Colors.white.withOpacity(0.0),
           selectedIndex: _currentIndex,
           onItemSelected: (index) {
             setState(() {
