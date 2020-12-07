@@ -217,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         UserCredential user = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomePage()));
         //langsung ke home page
       } catch (e) {

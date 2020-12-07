@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
 import 'package:my_ok/screen/login.dart';
@@ -11,6 +13,38 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  // RegisterActivityPresenter presenter;
+  // TextEditingController _nameController = TextEditingController();
+  // TextEditingController _emailController = TextEditingController();
+  // TextEditingController _passController = TextEditingController();
+  // TextEditingController _cPassController = TextEditingController();
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   presenter = RegisterActivityPresenter(this);
+  // }
+
+  // void doRegister(
+  //     String name, String email, String password, String cPassword) {
+  //   if (name.isNotEmpty &&
+  //       email.isNotEmpty &&
+  //       password.isNotEmpty &&
+  //       cPassword == password) {
+  //     if (name.length >= 5) {
+  //       if (password.length >= 8) {
+  //         presenter?.register(name, email, password);
+  //       } else {
+  //         toast("Password at least eight letter");
+  //       }
+  //     } else {
+  //       toast("Name at least five letter");
+  //     }
+  //   } else {
+  //     toast("Please fill all forms");
+  //   }
+  // }
+
   final formKey = GlobalKey<FormState>();
   String _nama, _email, _password, _confirmPw;
   bool _btnEnabled = false;
@@ -131,6 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           focusColor: Color(0xFF1D3557),
                         ),
                         onSaved: (input) => _nama = input,
+                        // controller: _nameController,
                       ),
                     ),
 
@@ -161,6 +196,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           focusColor: Color(0xFF1D3557),
                         ),
                         onSaved: (input) => _email = input,
+                        // controller: _emailController,
                       ),
                     ),
 
@@ -192,6 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           focusColor: Color(0xFF1D3557),
                         ),
                         onSaved: (input) => _password = input,
+                        // controller: _passController,
                       ),
                     ),
 
@@ -223,6 +260,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           focusColor: Color(0xFF1D3557),
                         ),
                         onSaved: (input) => _confirmPw = input,
+                        // controller: _cPassController,
                       ),
                     ),
                   ],

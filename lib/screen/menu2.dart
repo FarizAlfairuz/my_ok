@@ -12,6 +12,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(0xFFE93649)),
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
@@ -24,9 +25,49 @@ class _CartState extends State<Cart> {
           ),
         ),
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              elevation: 5.0,
+              margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: ListTile(
+                  leading: Container(
+                      height: 60,
+                      width: 60,
+                      child: Image.asset(
+                        'assets/images/banner/botol.png',
+                        fit: BoxFit.cover,
+                      )),
+                  title: Text(
+                    'Drinkware Imagination',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    'Rp 55.000,00-',
+                    // overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  trailing: Icon(
+                    Icons.delete,
+                    color: Color(0xFFE93649),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: Container(
-        margin: EdgeInsets.only(left: 30, right: 30),
+        padding: EdgeInsets.only(left: 30, right: 30),
         child: BottomNavyBar(
+          showElevation: false,
+          backgroundColor: Colors.white.withOpacity(0.0),
           selectedIndex: _currentIndex,
           onItemSelected: (index) {
             setState(() {
