@@ -45,8 +45,7 @@ class _LandingPageState extends State<LandingPage> {
             bottom: SizeConfig.blockHorizontal * -58,
             left: SizeConfig.blockHorizontal * -107,
             child: Image(
-              image:
-                  AssetImage('assets/images/login_register/decoration.png'),
+              image: AssetImage('assets/images/login_register/decoration.png'),
               fit: BoxFit.fitHeight,
               height: SizeConfig.blockVertical * 90,
             ),
@@ -69,7 +68,7 @@ class _LandingPageState extends State<LandingPage> {
                   children: <Widget>[
                     //page1
                     Padding(
-                      padding: EdgeInsets.fromLTRB(40.0,30.0,40.0,20.0),
+                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 20.0),
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -88,7 +87,7 @@ class _LandingPageState extends State<LandingPage> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Anda punya ide briliant tapi ga tau\nharus kemana? Goblok',
+                            'Anda punya ide briliant? tuangkan\npada aplikasi My.Ok',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20,
@@ -101,7 +100,7 @@ class _LandingPageState extends State<LandingPage> {
 
                     //page2
                     Padding(
-                      padding: EdgeInsets.fromLTRB(40.0,30.0,40.0,20.0),
+                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 20.0),
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -120,7 +119,7 @@ class _LandingPageState extends State<LandingPage> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Bisa bikin sendiri anying jangan\nnyusahin aing',
+                            'Buat kreasi sesuka kalian\ndan pesan sekarang!!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20,
@@ -133,7 +132,7 @@ class _LandingPageState extends State<LandingPage> {
 
                     //page3
                     Padding(
-                      padding: EdgeInsets.fromLTRB(40.0,30.0,40.0,20.0),
+                      padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 20.0),
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -152,7 +151,7 @@ class _LandingPageState extends State<LandingPage> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            'Jangan gaya sesuai Passion segala bangsat',
+                            'Bisa cetak apa saja sesuai passion kalian loh ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20,
@@ -209,9 +208,7 @@ class _LandingPageState extends State<LandingPage> {
                   : Text(''),
             ],
           ),
-          
-        ]
-      ),
+        ]),
       ),
       //get started
       bottomSheet: _currentPage == _numPages - 1
