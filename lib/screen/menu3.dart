@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:my_ok/layout.dart';
+import 'package:my_ok/screen/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_ok/service/auth_service.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -59,7 +62,9 @@ class _ProfileState extends State<Profile> {
                       margin: EdgeInsets.only(
                         right: SizeConfig.blockHorizontal * 10,
                       ),
-                      padding: EdgeInsets.only(top: SizeConfig.blockHorizontal * 3, bottom: SizeConfig.blockHorizontal * 3),
+                      padding: EdgeInsets.only(
+                          top: SizeConfig.blockHorizontal * 3,
+                          bottom: SizeConfig.blockHorizontal * 3),
                       height: SizeConfig.blockVertical * 15,
                       width: SizeConfig.blockHorizontal * 35,
                       // color: Colors.green,
@@ -79,13 +84,24 @@ class _ProfileState extends State<Profile> {
                           ),
                           Spacer(),
                           //logout
-                          Container(
-                            child: Text(
-                              'Log Out',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFFE93649),
-                                fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                              AuthServices authServices = new AuthServices();
+                              authServices.signOut();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ));
+                            },
+                            child: Container(
+                              child: Text(
+                                'Log Out',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFFE93649),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -127,7 +143,6 @@ class _ProfileState extends State<Profile> {
                         color: Colors.black,
                       ),
                     ),
-                    
                     Text(
                       'Address',
                       style: TextStyle(
@@ -151,7 +166,6 @@ class _ProfileState extends State<Profile> {
                         color: Colors.black,
                       ),
                     ),
-
                     Text(
                       'Phone',
                       style: TextStyle(
@@ -175,7 +189,6 @@ class _ProfileState extends State<Profile> {
                         color: Colors.black,
                       ),
                     ),
-
                     Text(
                       'Nama Bapak',
                       style: TextStyle(
