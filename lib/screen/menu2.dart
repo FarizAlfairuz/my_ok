@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:my_ok/screen/checkout1.dart';
+import 'package:my_ok/screen/checkout.dart';
 
 class Cart extends StatefulWidget {
   @override

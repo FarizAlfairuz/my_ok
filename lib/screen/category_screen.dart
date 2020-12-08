@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/screen/checkout_screen.dart';
 import 'package:my_ok/screen/menu2.dart';
-import 'checkout1.dart';
+import 'checkout.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
