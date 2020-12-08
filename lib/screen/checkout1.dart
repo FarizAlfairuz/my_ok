@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
+import 'package:my_ok/screen/checkout_screen.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -67,7 +68,9 @@ class _CheckoutState extends State<Checkout> {
                           height: SizeConfig.blockVertical * 8,
                           width: SizeConfig.blockVertical * 38,
                           child: FloatingActionButton.extended(
-                            onPressed: null,
+                            onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutCustom()));
+                            },
                             backgroundColor: Colors.red,
                             label: Text(
                               'Check Out',

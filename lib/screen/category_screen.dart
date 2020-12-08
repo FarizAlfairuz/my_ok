@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/screen/checkout_screen.dart';
 import 'package:my_ok/screen/menu2.dart';
+import 'checkout1.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     elevation: 0,
                     child: GestureDetector(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutCustom()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
