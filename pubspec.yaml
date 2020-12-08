@@ -26,6 +26,10 @@ dependencies:
   bottom_navy_bar: ^5.6.0
   firebase_auth: ^0.18.3+1
   firebase_core: ^0.5.2+1
+  image_picker: ^0.6.7+14
+  cloud_firestore: ^0.14.4
+  firebase_storage: ^5.2.0
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -51,6 +55,7 @@ flutter:
     - assets/images/landingpage/
     - assets/images/categories/
     - assets/images/banner/
+    - assets/images/items/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

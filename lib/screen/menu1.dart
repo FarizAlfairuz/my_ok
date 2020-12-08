@@ -1,15 +1,97 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:my_ok/screen/category_screen.dart';
+import 'package:my_ok/utilities/best_seller.dart';
+// import 'package:my_ok/utilities/category_card.dart';
+import 'menu2.dart';
+import 'menu3.dart';
 
 class HomePage extends StatefulWidget {
+  
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isSearchig = false; //search bar is tapped
+  bool _isSearching = false; //search bar is tapped
   int _currentIndex = 0;
+
+  
+  
+  categoryCard(String kategori, String gambar) {
+    return GestureDetector(
+      onTap: () {
+        // print(value);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => CategoryScreen()));
+      },
+      child: Container(
+        margin: EdgeInsets.all(10),
+        width: SizeConfig.blockVertical * 15,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(1, 3),
+            )
+          ],
+        ),
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: SizeConfig.blockVertical * 8,
+              margin: EdgeInsets.fromLTRB(10, 12, 10, 15),
+              child: Image(
+                image: AssetImage(gambar),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Text(
+              kategori,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  bestSeller() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Profile()));
+      },
+      child: Card(
+        elevation: 5.0,
+        margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: ListTile(
+            leading: Image.asset('assets/images/categories/mask.png'),
+            title: Text(
+              'New Normal Kit',
+              style: TextStyle(
+                  fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              'Wear your own custom New Normal Kit',
+              // overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 14),
+            ),
+            trailing: Icon(Icons.more_vert),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                     color: Color(0xFFE93649),
                     size: 30,
                   ),
-                  title: !_isSearchig
+                  title: !_isSearching
                       ? Text(
                           'Search Here...',
                           style: TextStyle(
@@ -78,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                             enabledBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
                             disabledBorder: InputBorder.none,
-                            hintText: 'is searcing...',
+                            hintText: 'is searching...',
                             hintStyle: TextStyle(
                               color: Color(0xFFE93649),
                             ),
@@ -86,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                   onTap: () {
                     setState(() {
-                      _isSearchig = !_isSearchig;
+                      _isSearching = !_isSearching;
                     });
                   },
                 ),
@@ -114,13 +196,16 @@ class _HomePageState extends State<HomePage> {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    categoryCard(),
-                    categoryCard(),
-                    categoryCard(),
-                    categoryCard(),
+                    categoryCard("Stationary",'assets/images/categories/stationery.png'),
+                    categoryCard("New Normal",'assets/images/categories/mask.png'),
+                    categoryCard("Technology",'assets/images/categories/tech.png'),
+                    categoryCard("Travel",'assets/images/categories/travel.png'),
+                    categoryCard("Drinkware",'assets/images/categories/bottle.png'),
                   ],
                 ),
               ),
+
+              //best seller
               Column(
                 children: <Widget>[
                   Align(
@@ -138,13 +223,13 @@ class _HomePageState extends State<HomePage> {
                   bestSeller(),
                   bestSeller(),
                   bestSeller(),
-                  bestSeller(),
                 ],
               ),
             ],
           ),
         ),
       ),
+
       bottomNavigationBar: Container(
         padding: EdgeInsets.only(left: 30, right: 30),
         child: BottomNavyBar(
@@ -202,63 +287,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-categoryCard() {
-  return Container(
-    margin: EdgeInsets.all(10),
-    width: SizeConfig.blockVertical * 15,
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(15),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 2,
-          blurRadius: 5,
-          offset: Offset(1, 3),
-        )
-      ],
-    ),
-    child: Column(
-      children: <Widget>[
-        Container(
-          height: SizeConfig.blockVertical * 8,
-          margin: EdgeInsets.fromLTRB(10, 12, 10, 15),
-          child: Image(
-            image: AssetImage('assets/images/categories/stationery.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        Text(
-          'Stationery',
-          style: TextStyle(
-            fontSize: 14,
-          ),
-        ),
-      ],
-    ),
-  );
-}
 
-bestSeller() {
-  return Card(
-    elevation: 5.0,
-    margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-    child: Padding(
-      padding: EdgeInsets.all(10.0),
-      child: ListTile(
-        leading: Image.asset('assets/images/categories/mask.png'),
-        title: Text(
-          'New Normal Kit',
-          style: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(
-          'Wear your own custom New Normal Kit',
-          // overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontSize: 14),
-        ),
-        trailing: Icon(Icons.more_vert),
-      ),
-    ),
-  );
-}
