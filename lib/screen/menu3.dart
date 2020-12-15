@@ -152,7 +152,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Text(
-                      'Perum Kentang Sina Mustopa belom bayar keripik',
+                      'Perum Kentang Mustopa no. 110',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,

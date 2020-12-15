@@ -44,11 +44,11 @@ class _CartState extends State<Cart> {
                         height: 60,
                         width: 60,
                         child: Image.asset(
-                          'assets/images/banner/botol.png',
+                          'assets/images/items/item1.jpg',
                           fit: BoxFit.cover,
                         )),
                     title: Text(
-                      'Drinkware Imagination',
+                      'Masker',
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black,

@@ -9,7 +9,6 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-
   final List<String> _listItem = [
     'assets/images/items/item1.jpg',
     'assets/images/items/item2.jpg',
@@ -19,6 +18,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
     'assets/images/items/item3.jpg',
     'assets/images/items/item1.jpg',
     'assets/images/items/item2.jpg',
+  ];
+
+  final List<String> _listNama = [
+    'Masker 1',
+    'Masker 2',
+    'Masker 3',
+    'Masker 4',
+    'Masker 5',
+    'Masker 6',
+    'Masker 7',
+    'Masker 8',
   ];
 
   @override
@@ -56,36 +66,44 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                children: _listItem.map((item) => Card(
-                  color: Colors.transparent,
-                    elevation: 0,
-                    child: GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout()));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: AssetImage(item),
-                            fit: BoxFit.cover
-                          )
-                        ),
-                        child: Transform.translate(
-                          offset: Offset(0,65),
+                children: _listItem
+                    .map(
+                      (item) => Card(
+                        color: Colors.transparent,
+                        elevation: 0,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Checkout()));
+                          },
                           child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 63),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white.withOpacity(0.8)
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                    image: AssetImage(item),
+                                    fit: BoxFit.cover)),
+                            child: Transform.translate(
+                              offset: Offset(0, 65),
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 63),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white.withOpacity(0.8)),
+                                child: Center(
+                                  child: Text(
+                                    'Masker',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                              ),
                             ),
-                            child: Center(child: Text('Masker',style: TextStyle(fontSize: 20),)),
                           ),
                         ),
                       ),
-                    ),
-                ),
-                ).toList(),
+                    )
+                    .toList(),
               ),
             ),
           ],

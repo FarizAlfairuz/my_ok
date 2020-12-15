@@ -13,9 +13,18 @@ class _CheckoutState extends State<Checkout> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xFFE93649)),
         backgroundColor: Colors.white,
         elevation: 0.0,
+        title: Text(
+          'Check Out',
+          style: TextStyle(
+            fontSize: 25,
+            color: Color(0xFFE93649),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         height: SizeConfig.screenHeight,
@@ -25,37 +34,57 @@ class _CheckoutState extends State<Checkout> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 20),
-              Container(height: 260, width: 300, color: Colors.blue),
+              Container(
+                height: 260,
+                width: 300,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/items/item1.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Container(
                 padding: EdgeInsets.all(20),
                 height: SizeConfig.blockHorizontal * 95,
                 width: SizeConfig.screenWidth,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(1, 3),
+                    )
+                  ],
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('ini nama produk', style: TextStyle(fontSize: 32)),
+                    Text('Masker', style: TextStyle(fontSize: 32)),
                     SizedBox(height: 20),
                     Text('status barang',
                         style: TextStyle(fontSize: 15, color: Colors.green)),
                     SizedBox(height: 20),
-                    Text(
-                        'Kustomisasi botol minum kamu dengan desain yang cantik yang kamu buat sendiri dengan penuh kreasi. Ukuran : 340mL'),
+                    Text('lorem ipsum'),
                     SizedBox(height: 18),
                     Row(
                       children: [
                         Container(
                           height: 40,
                           width: 112,
-                          color: Colors.white,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                          ),
+                          child: Center(child: Text('1')),
                         ),
                         Container(
                           height: 40,
                           width: 110,
-                          color: Colors.grey,
+                          // color: Colors.grey,
                         ),
                         Text('Rp 55.000', style: TextStyle(fontSize: 28)),
                       ],
@@ -68,8 +97,11 @@ class _CheckoutState extends State<Checkout> {
                           height: SizeConfig.blockVertical * 8,
                           width: SizeConfig.blockVertical * 38,
                           child: FloatingActionButton.extended(
-                            onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutCustom()));
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CheckoutCustom()));
                             },
                             backgroundColor: Colors.red,
                             label: Text(

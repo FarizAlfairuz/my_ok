@@ -66,7 +66,14 @@ class _CheckoutCustomState extends State<CheckoutCustom> {
               Container(
                 height: SizeConfig.blockVertical * 20,
                 width: SizeConfig.blockHorizontal * 70,
-                color: Colors.amber,
+                // color: Colors.amber,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/items/item1.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment(-0.85, 0),
