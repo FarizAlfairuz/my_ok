@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ok/layout.dart';
 import 'package:my_ok/screen/login.dart';
+import 'menu1.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -219,7 +220,7 @@ class _LandingPageState extends State<LandingPage> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                      MaterialPageRoute(builder: (context) => HomePage()));
                 },
                 child: Center(
                   child: Padding(
